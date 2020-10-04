@@ -1,4 +1,14 @@
 <?php
+/**
+ * Then no difficulty in handling path.
+ *
+ * @author    CrazyWhite <moe@mailo.com>
+ * @copyright 2020 (c) CrazyWhite - pathHandler
+ * @license   https://opensource.org/licenses/MIT - The MIT License (MIT)
+ * @link      https://github.com/Crazy-White/unpkg-proxy/tree/master/lib/pathHandler
+ * @since     1.0.0
+ */
+
 namespace pathHandler;
 
 function redirect()
@@ -41,8 +51,14 @@ function get($is_include_query = false)
         if ($is_include_query) {
             return $query;
         } else {
-            preg_match('/([\w+|\/]*)/', $query, $matches2);
-            return $matches2[1];
+        
+            $p = strpos($query, '&');
+            if (!$p) { 
+                $p = strpos($query, '?');
+                if(!$p) return $query;
+            }
+            return substr($query, 0, $p);
+            
         }
         
     }
