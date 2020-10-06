@@ -3,5 +3,5 @@
     RewriteBase /raw/
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
+    RewriteRule ^(.*) index.php/$1 [L]
 </IfModule>
